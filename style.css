@@ -19,18 +19,16 @@ div {
   height: 100vh;
   background: #3a3535;
 }
-.toolbar__pencil {
-  margin: 20px 0;
-  cursor: pointer;
-}
 
 canvas {
   width: 100%;
 }
 
-.fa-pencil {
+.fa-solid {
   color: white;
   font-size: 50px;
+  margin: 40px 0;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
