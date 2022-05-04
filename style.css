@@ -43,6 +43,14 @@ canvas {
   cursor: pointer;
 }
 
+.rect-icon {
+  border: 3px solid white;
+  width: 60px;
+  height: 40px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
 .width-range {
   width: 70px;
 }
