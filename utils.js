@@ -1,10 +1,9 @@
 import { canvas, ctx } from './canvas'
 
-// let shapes = []
 let coord = {
-    x: 0,
-    y: 0
-  }
+  x: 0,
+  y: 0
+}
 
 const getPosition = (event, coord) => {
   coord.x = event.clientX - canvas.offsetLeft
@@ -31,10 +30,24 @@ const drawShapes = shapes => {
         ctx.closePath()
         console.log('shapes', shapes)
       })
+
       break
   
     case 'rectangle':
+      ctx.lineWidth = arr.lineWidth
+      ctx.strokeStyle = arr.color
       ctx.strokeRect(arr.paths[0].x, arr.paths[0].y, arr.width, arr.height)
+      
+      break
+
+    case 'circle':
+      ctx.beginPath()
+      ctx.lineWidth = arr.lineWidth
+      ctx.strokeStyle = arr.color
+      ctx.arc(arr.paths[0].x, arr.paths[0].y, Math.abs(arr.radius), 0, Math.PI / 180 * 360)
+      ctx.stroke()
+      ctx.closePath()
+
       break
     }
   })

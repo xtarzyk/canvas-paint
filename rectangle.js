@@ -15,11 +15,11 @@ const startDrawingRect = event => {
     lineWidth: widthRange.value,
     color: colorPicker.value
   }
+
   getPosition(event, coord)
+
   startX = coord.x
   startY = coord.y
-  // console.log(startX)
-  // console.log(startY)
 }
 
 const sketchRect = (event, shapes) => {
@@ -27,8 +27,6 @@ const sketchRect = (event, shapes) => {
     return
   }
 
-  ctx.lineWidth = widthRange.value
-  ctx.strokeStyle = colorPicker.value
   getPosition(event, coord)
 
   let width = coord.x - startX
@@ -36,16 +34,16 @@ const sketchRect = (event, shapes) => {
   
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawShapes(shapes)
+  ctx.lineWidth = widthRange.value
+  ctx.strokeStyle = colorPicker.value
   ctx.strokeRect(startX, startY, width, height)
 
-  tempPath = {x: coord.x, y: coord.y}
+  tempPath = { x: coord.x, y: coord.y }
   path.paths = path.paths.concat(tempPath)
   path = Object.assign(path, {width: width, height: height})
-  
-  console.log('tempPath', tempPath)
 }
   
-const stopDrawingRect = (onStopped) => {
+const stopDrawingRect = onStopped => {
   draw = false
   onStopped(path)
   tempPath = null

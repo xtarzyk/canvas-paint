@@ -1,17 +1,11 @@
-/* eslint-disable no-import-assign */
 import { getPosition, coord } from './utils'
 import { ctx, widthRange, colorPicker } from './canvas'
-
-// let coord = {
-//   x: 0,
-//   y: 0
-// }
 
 let draw = false
 let path = null
 let tempPath = null
 
-const startDrawing = (event) => {
+const startDrawingLine = (event) => {
   draw = true
   path = {
     type: 'path',
@@ -19,17 +13,17 @@ const startDrawing = (event) => {
     lineWidth: widthRange.value,
     color: colorPicker.value
   }
+
   getPosition(event, coord)
 }
   
-const stopDrawing = onStopped => {
+const stopDrawingLine = onStopped => {
   draw = false
   onStopped(path)
   tempPath = null
 }
 
-const sketch = (event) => {
-  console.log(draw)
+const sketchLine = event => {
   if (!draw) {
     return
   }
@@ -43,12 +37,10 @@ const sketch = (event) => {
   ctx.stroke()
   tempPath = { x: coord.x, y: coord.y }
   path.paths = path.paths.concat(tempPath)
-
-  console.log('tempPath', tempPath)
 }
 
 export {
-  startDrawing,
-  stopDrawing,
-  sketch
+  startDrawingLine,
+  stopDrawingLine,
+  sketchLine
 }
