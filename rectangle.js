@@ -40,7 +40,7 @@ const sketchRect = (event, shapes) => {
 
   tempPath = { x: coord.x, y: coord.y }
   path.paths = path.paths.concat(tempPath)
-  path = Object.assign(path, {width: width, height: height})
+  path = Object.assign(path, { width: width, height: height })
 }
   
 const stopDrawingRect = onStopped => {

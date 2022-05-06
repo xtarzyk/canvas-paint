@@ -42,9 +42,12 @@ const sketchCircle = (event, shapes) => {
   ctx.stroke()
   ctx.closePath()
   
-  tempPath = { x: coord.x, y: coord.y }
+  tempPath = { 
+    x: coord.x, 
+    y: coord.y 
+  }
   path.paths = path.paths.concat(tempPath)
-  path = Object.assign(path, { radius: radius })
+  path = Object.assign(...{ radius: radius })
 }
 
 const stopDrawingCircle = onStopped => {

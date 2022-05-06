@@ -13,12 +13,12 @@ const getPosition = (event, coord) => {
 const drawShapes = shapes => {
   shapes.forEach((arr, index) => {
     switch (arr.type) {
-    case 'path':
-      ctx.beginPath()
-      ctx.moveTo(arr.paths[index].x, arr.paths[index].y)
-      ctx.lineWidth = arr.lineWidth
-      ctx.strokeStyle = arr.color
-      arr.paths.forEach((e, index) => {
+      case 'path':
+        ctx.beginPath()
+        ctx.moveTo(arr.paths[index].x, arr.paths[index].y)
+        ctx.lineWidth = arr.lineWidth
+        ctx.strokeStyle = arr.color
+        arr.paths.forEach((e, index) => {
         if (index < arr.paths.length - 1) {
           ctx.lineTo(arr.paths[index + 1].x, arr.paths[index + 1].y)
           

@@ -13,51 +13,48 @@ let selectedTool = null
 
 canvas.addEventListener('mousedown', event => {
   switch (selectedTool) {
-  case 'pencil':
-    return startDrawingLine(event)
-  case 'rect':
-    return startDrawingRect(event)
-  case 'circle':
-    return startDrawingCircle(event)
-  default:
-    return null
+    case 'pencil':
+      return startDrawingLine(event)
+    case 'rect':
+      return startDrawingRect(event)
+    case 'circle':
+      return startDrawingCircle(event)
+    default:
+      return null
   }
 })
 
 canvas.addEventListener('mouseup', () => {
   switch (selectedTool) {
-  case 'pencil':
-    return stopDrawingLine(path => {
-      shapes = shapes.concat(path)
-      console.log(shapes)
-    })
-  case 'rect':
-    return stopDrawingRect(path => {
-      drawShapes(shapes)
-      shapes = shapes.concat(path)
-      console.log(shapes)
-    })
-  case 'circle':
-    return stopDrawingCircle(path => {
-      drawShapes(shapes)
-      shapes = shapes.concat(path)
-      console.log(shapes)
-    })
-  default:
-    return null
+    case 'pencil':
+      return stopDrawingLine(path => {
+        shapes = shapes.concat(path)
+      })
+    case 'rect':
+      return stopDrawingRect(path => {
+        drawShapes(shapes)
+        shapes = shapes.concat(path)
+      })
+    case 'circle':
+      return stopDrawingCircle(path => {
+        drawShapes(shapes)
+        shapes = shapes.concat(path)
+      })
+    default:
+      return null
   }
 })
 
 canvas.addEventListener('mousemove', event => {
   switch (selectedTool) {
-  case 'pencil':
-    return sketchLine(event)
-  case 'rect':
-    return sketchRect(event, shapes)
-  case 'circle':
-    return sketchCircle(event, shapes)
-  default:
-    return null
+    case 'pencil':
+      return sketchLine(event)
+    case 'rect':
+      return sketchRect(event, shapes)
+    case 'circle':
+      return sketchCircle(event, shapes)
+    default:
+      return null
   }
 })
 
