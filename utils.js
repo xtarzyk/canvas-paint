@@ -14,6 +14,7 @@ const getPosition = (event, coord) => {
 
 const drawShapes = shapes => {
   shapes.forEach((arr, index) => {
+    const [firstPath] = arr.paths
     switch (arr.type) {
       case 'path':
         ctx.beginPath()
@@ -22,22 +23,22 @@ const drawShapes = shapes => {
         ctx.strokeStyle = arr.color
         arr.paths.forEach((e, index) => {
 
-          if (index < arr.paths.length - 1) {
-            ctx.lineTo(arr.paths[index + 1].x, arr.paths[index + 1].y)
+        if (index < arr.paths.length - 1) {
+          ctx.lineTo(arr.paths[index + 1].x, arr.paths[index + 1].y)
           
-            return
-          }
+          return
+        }
   
-          ctx.lineTo(arr.paths[index].x, arr.paths[index].y)
-          ctx.stroke()
-          ctx.closePath()
+        ctx.lineTo(arr.paths[index].x, arr.paths[index].y)
+        ctx.stroke()
+        ctx.closePath()
       })
 
       break
   
     case 'rectangle':
-      startX = arr.paths[0].x
-      startY = arr.paths[0].y
+      startX = firstPath.x
+      startY = firstPath.y
       ctx.lineWidth = arr.lineWidth
       ctx.strokeStyle = arr.color
       ctx.strokeRect(startX, startY, arr.width, arr.height)
@@ -45,8 +46,8 @@ const drawShapes = shapes => {
       break
 
     case 'circle':
-      startX = arr.paths[0].x
-      startY = arr.paths[0].y
+      startX = firstPath.x
+      startY = firstPath.y
       ctx.beginPath()
       ctx.lineWidth = arr.lineWidth
       ctx.strokeStyle = arr.color
