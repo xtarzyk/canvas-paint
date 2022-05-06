@@ -7,7 +7,30 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="toolbar">
+        <div class="toolbar__pencil">
+          <i class="fa-solid fa-pencil"></i>
+        </div>
+        <div class="toolbar__rectangle">
+          <div class="rect-icon"></div>
+        </div>
+        <div class="toolbar__circle">
+          <div class="circle-icon"></div>
+        </div>
+        <div class="toolbar__width-range">
+          <input type="range" min="1" max="20" value="1" class="width-range">
+        </div>
+        <div class="toolbar__color-picker">
+          <input type="color" class="color-picker">
+        </div>
+        <div class="toolbar__undo">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
     <script type="module" src="/main.js"></script>
+    <script src="https://kit.fontawesome.com/f4d54669b9.js" crossorigin="anonymous"></script>
   </body>
 </html>
