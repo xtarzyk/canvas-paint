@@ -4,6 +4,8 @@ let coord = {
   x: 0,
   y: 0
 }
+let startX
+let startY
 
 const getPosition = (event, coord) => {
   coord.x = event.clientX - canvas.offsetLeft
@@ -19,32 +21,36 @@ const drawShapes = shapes => {
         ctx.lineWidth = arr.lineWidth
         ctx.strokeStyle = arr.color
         arr.paths.forEach((e, index) => {
-        if (index < arr.paths.length - 1) {
-          ctx.lineTo(arr.paths[index + 1].x, arr.paths[index + 1].y)
+
+          if (index < arr.paths.length - 1) {
+            ctx.lineTo(arr.paths[index + 1].x, arr.paths[index + 1].y)
           
-          return
-        }
+            return
+          }
   
-        ctx.lineTo(arr.paths[index].x, arr.paths[index].y)
-        ctx.stroke()
-        ctx.closePath()
-        console.log('shapes', shapes)
+          ctx.lineTo(arr.paths[index].x, arr.paths[index].y)
+          ctx.stroke()
+          ctx.closePath()
       })
 
       break
   
     case 'rectangle':
+      startX = arr.paths[0].x
+      startY = arr.paths[0].y
       ctx.lineWidth = arr.lineWidth
       ctx.strokeStyle = arr.color
-      ctx.strokeRect(arr.paths[0].x, arr.paths[0].y, arr.width, arr.height)
+      ctx.strokeRect(startX, startY, arr.width, arr.height)
       
       break
 
     case 'circle':
+      startX = arr.paths[0].x
+      startY = arr.paths[0].y
       ctx.beginPath()
       ctx.lineWidth = arr.lineWidth
       ctx.strokeStyle = arr.color
-      ctx.arc(arr.paths[0].x, arr.paths[0].y, Math.abs(arr.radius), 0, Math.PI / 180 * 360)
+      ctx.arc(startX, startY, Math.abs(arr.radius), 0, Math.PI / 180 * 360)
       ctx.stroke()
       ctx.closePath()
 

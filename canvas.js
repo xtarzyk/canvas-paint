@@ -9,9 +9,12 @@ canvas.setAttribute('height', `${canvas.scrollHeight}`)
 widthRange.value = 1
 colorPicker.value = 'black'
 
+const clearCanvas = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
+
 export {
   canvas,
   ctx,
   widthRange,
-  colorPicker
+  colorPicker,
+  clearCanvas
 }

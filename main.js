@@ -1,7 +1,7 @@
 import { startDrawingLine, stopDrawingLine, sketchLine } from './path'
 import { startDrawingRect, stopDrawingRect, sketchRect } from './rectangle'
 import { startDrawingCircle, stopDrawingCircle, sketchCircle } from './circle'
-import { canvas, ctx } from './canvas'
+import { canvas, clearCanvas } from './canvas'
 import { drawShapes } from './utils'
 
 const pencil = document.querySelector('.toolbar__pencil')
@@ -72,7 +72,7 @@ circle.addEventListener('click', () => {
 
 undo.addEventListener('click', () => {
   shapes = shapes.slice(0, shapes.length - 1)
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  clearCanvas()
   drawShapes(shapes)
 })
 

@@ -1,4 +1,4 @@
-import { canvas, ctx, widthRange, colorPicker } from './canvas'
+import { ctx, widthRange, colorPicker, clearCanvas } from './canvas'
 import { getPosition, drawShapes, coord } from './utils'
 
 let draw = false
@@ -33,7 +33,7 @@ const sketchCircle = (event, shapes) => {
   
   const radius = getDistance(startX, startY, coord.x, coord.y)
     
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  clearCanvas()
   drawShapes(shapes)
   ctx.beginPath()
   ctx.lineWidth = widthRange.value
@@ -47,7 +47,7 @@ const sketchCircle = (event, shapes) => {
     y: coord.y 
   }
   path.paths = path.paths.concat(tempPath)
-  path = Object.assign(...{ radius: radius })
+  path = { ...path, radius: radius }
 }
 
 const stopDrawingCircle = onStopped => {

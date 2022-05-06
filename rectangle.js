@@ -1,4 +1,4 @@
-import { canvas, ctx, widthRange, colorPicker } from './canvas'
+import { ctx, widthRange, colorPicker, clearCanvas } from './canvas'
 import { getPosition, drawShapes, coord } from './utils'
 
 let draw = false
@@ -32,7 +32,7 @@ const sketchRect = (event, shapes) => {
   let width = coord.x - startX
   let height = coord.y - startY
   
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  clearCanvas()
   drawShapes(shapes)
   ctx.lineWidth = widthRange.value
   ctx.strokeStyle = colorPicker.value
@@ -40,7 +40,7 @@ const sketchRect = (event, shapes) => {
 
   tempPath = { x: coord.x, y: coord.y }
   path.paths = path.paths.concat(tempPath)
-  path = Object.assign(path, { width: width, height: height })
+  path = { ...path, width: width, height: height }
 }
   
 const stopDrawingRect = onStopped => {
